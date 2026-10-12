@@ -8,3 +8,6 @@ receipts/
 *Backup*.json
 .env*
 test-results/
+
+supabase-sdk.js
+package-lock.json

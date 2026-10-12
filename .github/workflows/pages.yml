@@ -13,6 +13,18 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: test-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -23,17 +35,26 @@ jobs:
           node-version: 22
       - name: Verify mobile dashboard
         run: |
-          npm install --no-save playwright
+          npm install --no-save playwright @supabase/supabase-js@2.110.2 esbuild@0.25.12
+          npx esbuild sdk-entry.js --bundle --format=esm --platform=browser --outfile=supabase-sdk.js
           npx playwright install --with-deps chromium
           python3 -m http.server 8000 &
           node mobile-check.cjs
+          node sync-check.cjs
+      - name: Verify private access policies and atomic revisions
+        env:
+          PGPASSWORD: test-only
+        run: |
+          psql -h localhost -U postgres -v ON_ERROR_STOP=1 -f supabase/tests/bootstrap.sql
+          psql -h localhost -U postgres -v ON_ERROR_STOP=1 -f supabase/migrations/001_private_sync.sql
+          psql -h localhost -U postgres -v ON_ERROR_STOP=1 -f supabase/tests/access.sql
       - uses: actions/configure-pages@v5
         with:
           enablement: true
       - name: Package only public app shell
         run: |
           mkdir public
-          cp index.html manifest.webmanifest sw.js icon-192.png icon-512.png public/
+          cp index.html manifest.webmanifest sw.js sync.js cloud-config.json supabase-sdk.js icon-192.png icon-512.png public/
           touch public/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
