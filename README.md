@@ -1,15 +1,30 @@
 # Cheyenne Command Center
 
-Dark-mode, responsive, browser-local expense dashboard and installable PWA.
+Dark-mode, responsive expense and travel PWA hosted on GitHub Pages. The repository contains only the public application shell. Personal transactions, receipts, travel requests, contact preferences, rotations, and start dates belong in local device storage or the private Supabase workspace. Never commit personal backups or receipt files.
 
-Travel hub: flight legs, time-zone-aware schedules and countdowns, seats, gates, confirmation codes, and National rental pickup/return details. Booking states and schedule data are manually entered; no live flight-status integration is implied. Travel bookings do not create expense transactions.
+## Daily use
 
-Import a CSV using the in-app template or JSON with `flights` and `rentals` arrays. Each flight requires `flightNumber`, `from`, `to`, `departure`, and `arrival`; each rental requires `confirmation`, `pickupLocation`, `pickup`, `dropoffLocation`, and `dropoff`. Date/time values use `YYYY-MM-DDTHH:MM` in the airport/location's local time. Houston airports default to America/Chicago; Denver and Cheyenne default to America/Denver. Other supported zones can be selected explicitly. Preview before merging; flight matching uses flight number, airports and departure, while rentals match by confirmation. Matching imports replace all supplied record fields, including blanks. Full dashboard backups include travel and retain compatibility with older expense-only backups.
+- Overview includes today's on-site per diem status, meals, missing receipts, and collapsible insights.
+- Quick add (or Alt+A) opens meal, rental fuel, receipt, rental, hotel, and other purchase shortcuts with today's local date.
+- Travel includes rotation cards, travel-day flight/rental details, booking boards, agent requests, and a collapsible mileage log. Mileage reimbursement remains unconfirmed for rentals.
+- Purchases includes a receipt inbox. Upload images/PDFs under 1.5 MB, review the details manually, and assign them to expenses. Exact byte duplicates are skipped. Receipt OCR is not enabled.
+- Reimbursements separates employer payment progress from card payback, and includes monthly closeout and Concur preparation. Statuses are manually recorded; the app does not submit to Concur or verify deposits.
+- Per diem is calculated only for Monday-Friday on or after the privately saved start date, with on-site eligibility confirmed by the user. Meals on excluded dates remain in the expense history but do not reduce per diem savings.
 
-The repository contains only the app shell. It starts with no transactions, trips, receipts, housing amounts, or personal payment reminders. Records and receipts stay in localStorage on the device; backup and restore are manual local files. Never commit personal backups or receipts. GitHub Pages serves the shell and does not synchronize expense data.
+## Travel requests and imports
 
-Deployment: Settings → Pages → select GitHub Actions. The Pages workflow publishes an explicit allowlist of five app files. Private repositories require an eligible GitHub plan for Pages; repository visibility is not changed by this project.
+Agent contacts and editable email drafts are private records. Opening a draft in an email app does not send it or mark it Requested. Requests can be Draft, Requested, or Confirmed; confirmed bookings are imported separately to avoid invented confirmations or duplicate purchases.
 
-On iPhone, open the deployed URL in Safari and select Share → Add to Home Screen. On Android, use the browser's Install app / Add to Home screen option. Open once online before offline use. Dark mode is the default and the chosen theme is saved locally.
+Travel JSON accepts flights and/or rentals arrays, or CSV from the in-app template. Flights need a flight number, three-letter airports, and departure date; known times use YYYY-MM-DDTHH:MM in the airport local time. Rentals require a confirmation; unknown times may remain blank. Imports preview and merge matches by flight number, airports, and date, or rental confirmation. Costs in booking boards are reference values and do not create expenses.
 
-Use Backup data in the original dashboard, then Restore in the hosted app to move your records privately. Data does not transfer automatically between file URLs and the hosted origin. Browser storage may be cleared, so keep private backups. Coding and policy guidance inherited from the source dashboard must be verified with WM before filing a claim.
+## Sync and backups
+
+See supabase/SETUP.md for owner-only Auth, membership authorization, RLS, revision-checked saves, and private receipt storage. Public cloud-config.json contains only a project URL and publishable key. Never expose elevated keys. Inbox receipts and expense receipts upload under owner/content-hash paths; cloud snapshots contain references, not embedded image bytes. Full backups fetch cloud-only receipts and include all record types. Existing mileage records remain compatible with backups.
+
+Restore a full backup in the hosted app to move original file-based records. Sign in on the device containing your full records and choose Start syncing this device; then sign in on other devices and use cloud records. Stale writes pause for review instead of overwriting newer changes. Keep private backups.
+
+## Deployment and verification
+
+The GitHub Actions workflow builds the pinned Supabase SDK, runs responsive and two-device mock sync checks plus a PostgreSQL security harness, then publishes an explicit app-asset allowlist. No personal records or test harness files are deployed. GitHub Pages must use GitHub Actions.
+
+On iPhone, open in Safari and choose Share > Add to Home Screen. On Android, use Install app / Add to Home screen. Load online once before offline use. Airfare and rental status, policy guidance, and amounts are user-entered and should be verified before submitting expenses.
