@@ -26,7 +26,7 @@
    // A save can reach the server just before a reload drops its acknowledgement.
    if(cached&&state.meta.dirty&&row&&Number(row.revision)!==state.meta.revision){const seq=state.meta.seq;const snapshot=await cloudSnapshot(db,false);if(epoch!==state.epoch)return;if(same(snapshot,row.data)){state.meta.revision=Number(row.revision);state.meta.lastSynced=row.updated_at;state.meta.dirty=state.meta.seq!==seq;persist();if(state.meta.dirty)schedule();else message('Your interrupted save was already received. All changes are synced.','Synced');}else choice('conflict',row);return;}
    if(cached&&state.meta.revision>0){if(row&&Number(row.revision)===state.meta.revision){if(state.meta.dirty)schedule();else applyRemote(row);}else if(state.meta.dirty)choice('conflict',row);else if(row)applyRemote(row);else choice('initial',null);}
-   else if(row){const meaningful=db.expenses.length||db.trips.length||db.flights.length||db.rentals.length||Object.keys(db.days).length||db.octStipend||db.octHotel;if(meaningful)choice('initial',row);else applyRemote(row);}
+   else if(row){const meaningful=db.travelRequests?.length||db.travelPreferences?.agentEmail||db.expenses.length||db.trips.length||db.flights.length||db.rentals.length||Object.keys(db.days).length||db.octStipend||db.octHotel;if(meaningful)choice('initial',row);else applyRemote(row);}
    else choice('initial',null);
    persist();
   }catch(e){if(epoch!==state.epoch)return;if(!navigator.onLine&&state.meta.authorized){state.ready=true;message('Offline. Your device copy is available; changes will sync after reconnecting.','Offline · queued');}else message('Cloud connection needs attention: '+e.message,'Connection needed');}
