@@ -1,6 +1,10 @@
-# CHY / META Expense Command Center
+# Cheyenne Command Center
 
 Dark-mode, responsive, browser-local expense dashboard and installable PWA.
+
+Travel hub: flight legs, time-zone-aware schedules and countdowns, seats, gates, confirmation codes, and National rental pickup/return details. Booking states and schedule data are manually entered; no live flight-status integration is implied. Travel bookings do not create expense transactions.
+
+Import a CSV using the in-app template or JSON with `flights` and `rentals` arrays. Each flight requires `flightNumber`, `from`, `to`, `departure`, and `arrival`; each rental requires `confirmation`, `pickupLocation`, `pickup`, `dropoffLocation`, and `dropoff`. Date/time values use `YYYY-MM-DDTHH:MM` in the airport/location's local time. Houston airports default to America/Chicago; Denver and Cheyenne default to America/Denver. Other supported zones can be selected explicitly. Preview before merging; flight matching uses flight number, airports and departure, while rentals match by confirmation. Matching imports replace all supplied record fields, including blanks. Full dashboard backups include travel and retain compatibility with older expense-only backups.
 
 The repository contains only the app shell. It starts with no transactions, trips, receipts, housing amounts, or personal payment reminders. Records and receipts stay in localStorage on the device; backup and restore are manual local files. Never commit personal backups or receipts. GitHub Pages serves the shell and does not synchronize expense data.
 

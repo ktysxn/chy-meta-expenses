@@ -8,7 +8,7 @@ const assert = require('node:assert/strict');
   await page.goto('http://localhost:8000/index.html');
   assert(await page.locator('body.dark').count(), 'Dark mode must be default');
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Page must fit mobile width');
-  for(const id of ['expenses','perdiem','mileage','payback','insights','calendar','concur','overview']){
+  for(const id of ['travel','expenses','perdiem','mileage','payback','insights','calendar','concur','overview']){
    await page.locator(`[data-screen="${id}"]`).click();
    assert(await page.locator(`#${id}.active`).count());
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${id} overflows at ${width}`);
@@ -24,8 +24,25 @@ const assert = require('node:assert/strict');
   await f.locator('button[type="submit"], button:not([type])').last().click();
   await page.reload();await page.locator('[data-screen="expenses"]').click();
   assert(await page.locator('#allExpenses').innerText().then(t=>t.includes('Synthetic test purchase')),'Records persist locally');
+  await page.locator('[data-screen="travel"]').click();
+  await page.getByRole('button',{name:'＋ Flight',exact:true}).click();
+  for(const [key,value] of Object.entries({rotation:'Synthetic rotation',airline:'United',flightNumber:'UA000',from:'IAH',to:'DEN',departure:'2027-01-10T10:00',arrival:'2027-01-10T11:00',confirmation:'TESTONLY'})) await page.locator('#travel_'+key).fill(value);
+  await page.getByRole('button',{name:'Save booking',exact:true}).click();
+  assert((await page.locator('#flightBoard').innerText()).includes('2h 0m'),'Duration accounts for Houston and Denver time zones');
+  const travelImport={flights:[{rotation:'Synthetic rotation',airline:'United',flightNumber:'UA000',from:'IAH',to:'DEN',departure:'2027-01-10T10:00',arrival:'2027-01-10T11:00',seat:'12A'}],rentals:[{rotation:'Synthetic rotation',confirmation:'SYNTHETIC-ONLY',pickupLocation:'DEN',pickup:'2027-01-10T12:00',dropoffLocation:'DEN',dropoff:'2027-01-22T12:00',vehicle:'Test vehicle'}]};
+  await page.locator('#travelImportFile').setInputFiles({name:'test-travel.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(travelImport))});
+  await page.getByRole('button',{name:'Merge bookings',exact:true}).click();
+  assert((await page.locator('#travelImportPreview').innerText()).includes('1 added, 1 updated'),'Import deduplicates and merges bookings');
+  await page.reload();await page.locator('[data-screen="travel"]').click();
+  assert.equal(await page.locator('#flightBoard .travel-ticket').count(),1);
+  assert((await page.locator('#flightBoard').innerText()).includes('12A'));
+  assert((await page.locator('#rentalBoard').innerText()).includes('Test vehicle'));
+  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Travel board fits mobile with saved data');
+  await page.locator('[data-screen="expenses"]').click();assert((await page.locator('#allExpenses').innerText()).includes('Synthetic test purchase'),'Travel import preserves expenses');
+  const backupPromise=page.waitForEvent('download');await page.getByRole('button',{name:'↓ Backup data',exact:true}).click();const backup=await backupPromise;const fs=require('node:fs');const data=JSON.parse(fs.readFileSync(await backup.path(),'utf8')).data;assert.equal(data.flights.length,1);assert.equal(data.rentals.length,1);assert.equal(data.expenses.length,1);
+  await page.locator('[data-screen="calendar"]').click();await page.getByRole('button',{name:'Next',exact:true}).count();
   assert.deepEqual(errors,[]);
   await page.close();
  }
- await browser.close();console.log('Mobile checks passed: 375, 390, 430 pixels, navigation, themes, local persistence');
+ await browser.close();console.log('Mobile checks passed: 375, 390, 430 pixels; navigation, themes, expenses, time zones, travel merge, persistence and backups');
 })().catch(e=>{console.error(e);process.exit(1)});

@@ -1,6 +1,6 @@
 {
-  "name": "CHY / META Expense Command Center",
-  "short_name": "CHY Expenses",
+  "name": "Cheyenne Command Center",
+  "short_name": "Cheyenne",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
