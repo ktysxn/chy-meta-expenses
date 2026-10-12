@@ -65,6 +65,8 @@ const assert = require('node:assert/strict');
   assert.equal(await page.locator('#request_agentEmail').inputValue(),'agent@example.test');
   assert.equal(await page.locator('#request_status').inputValue(),'Requested');
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Request planner fits mobile');
+  const diemResult=await page.evaluate(()=>{const original=structuredClone(db);db.perDiemStartDate='2030-01-07';db.days={'2030-01-04':'Confirmed','2030-01-05':'Confirmed','2030-01-06':'Planned','2030-01-07':'Confirmed','2030-01-08':'Planned','2030-01-12':'Confirmed'};db.expenses=[{id:1,date:'2030-01-04',name:'Before start',category:'Food / per diem',amount:50,status:'Excluded'},{id:2,date:'2030-01-12',name:'Weekend meal',category:'Food / per diem',amount:20,status:'Excluded'},{id:3,date:'2030-01-07',name:'Workday meal',category:'Food / per diem',amount:10,status:'Excluded'}];render();const result={eligible:eligible(),planned:planned(),food:food(),dates:perDiemWorkdays(),expenses:db.expenses.length,concur:document.getElementById('concurStats').textContent};db=original;render();return result;});
+  assert.equal(diemResult.eligible,1);assert.equal(diemResult.planned,2);assert.equal(diemResult.food,10);assert.equal(diemResult.expenses,3);assert(diemResult.concur.includes('$88.00'));assert(diemResult.dates.every(d=>d>='2030-01-07'&&![0,6].includes(new Date(d+'T12:00:00Z').getUTCDay())));
   assert.deepEqual(errors,[]);
   await page.close();
  }
