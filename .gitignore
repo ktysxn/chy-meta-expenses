@@ -1,0 +1,10 @@
+node_modules/
+private/
+backups/
+receipts/
+*.xlsx
+*.csv
+*.pdf
+*Backup*.json
+.env*
+test-results/
