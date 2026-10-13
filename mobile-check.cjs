@@ -13,8 +13,8 @@ const assert = require('node:assert/strict');
    assert(await page.locator(`#${id}.active`).count());
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${id} overflows at ${width}`);
   }
-  await page.locator('#themeBtn').click();await page.reload();
-  assert.equal(await page.locator('body.dark').count(),0,'Theme persists');
+  await page.evaluate(()=>localStorage.setItem('chy_meta_theme','light'));await page.reload();
+  assert.equal(await page.locator('body.dark').count(),1,'Legacy light preference must still load dark');assert.equal(await page.locator('#themeBtn').count(),0,'Theme toggle removed');
   await page.locator('[data-screen="expenses"]').click();
   const f=page.locator('#expenseForm');
   await f.locator('[name="date"]').fill('2026-01-01');
