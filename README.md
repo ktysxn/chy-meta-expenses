@@ -7,7 +7,7 @@ Dark-mode, responsive expense and travel PWA hosted on GitHub Pages. The reposit
 - Overview includes today's on-site per diem status, meals, missing receipts, and collapsible insights.
 - Quick add (or Alt+A) opens meal, rental fuel, receipt, rental, hotel, and other purchase shortcuts with today's local date.
 - Travel includes rotation cards, travel-day flight/rental details, booking boards, agent requests, and a collapsible mileage log. Mileage reimbursement remains unconfirmed for rentals.
-- Purchases includes a receipt inbox. Upload images/PDFs under 1.5 MB, review the details manually, and assign them to expenses. Exact byte duplicates are skipped. Receipt OCR is not enabled.
+- Purchases includes a receipt inbox. Upload images/PDFs up to 10 MB (large photos compress automatically; large PDFs need online cloud sign-in), review the details manually, and assign them to expenses. Exact byte duplicates are skipped. Receipt OCR is not enabled.
 - Reimbursements separates employer payment progress from card payback, and includes monthly closeout and Concur preparation. Statuses are manually recorded; the app does not submit to Concur or verify deposits.
 - Per diem is calculated only for Monday-Friday on or after the privately saved start date, with on-site eligibility confirmed by the user. Meals on excluded dates remain in the expense history but do not reduce per diem savings.
 
