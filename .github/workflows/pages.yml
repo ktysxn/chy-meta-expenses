@@ -46,6 +46,7 @@ jobs:
           node mobile-check.cjs
           node sync-check.cjs
           node meal-check.cjs
+          node overview-check.cjs
       - name: Verify private access policies and atomic revisions
         env:
           PGPASSWORD: test-only
@@ -59,7 +60,7 @@ jobs:
       - name: Package only public app shell
         run: |
           mkdir public
-          cp index.html manifest.webmanifest sw.js sync.js planner.js command.js receipts.js meal-tools.js expense-editor.js cloud-config.json supabase-sdk.js icon-192.png icon-512.png public/
+          cp index.html manifest.webmanifest sw.js sync.js planner.js command.js receipts.js meal-tools.js expense-editor.js overview-tools.js cloud-config.json supabase-sdk.js icon-192.png icon-512.png public/
           cp -r ocr public/
           touch public/.nojekyll
       - uses: actions/upload-pages-artifact@v3
