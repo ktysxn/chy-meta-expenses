@@ -35,12 +35,17 @@ jobs:
           node-version: 22
       - name: Verify mobile dashboard
         run: |
-          npm install --no-save playwright @supabase/supabase-js@2.110.2 esbuild@0.25.12
+          npm install --no-save playwright @supabase/supabase-js@2.110.2 esbuild@0.25.12 tesseract.js@7.0.0 @tesseract.js-data/eng@1.0.0
           npx esbuild sdk-entry.js --bundle --format=esm --platform=browser --outfile=supabase-sdk.js
+          mkdir -p ocr
+          cp node_modules/tesseract.js/dist/tesseract.min.js node_modules/tesseract.js/dist/worker.min.js ocr/
+          cp node_modules/tesseract.js-core/*.wasm* ocr/
+          cp node_modules/@tesseract.js-data/eng/4.0.0_best_int/eng.traineddata.gz ocr/
           npx playwright install --with-deps chromium
           python3 -m http.server 8000 &
           node mobile-check.cjs
           node sync-check.cjs
+          node meal-check.cjs
       - name: Verify private access policies and atomic revisions
         env:
           PGPASSWORD: test-only
@@ -54,7 +59,8 @@ jobs:
       - name: Package only public app shell
         run: |
           mkdir public
-          cp index.html manifest.webmanifest sw.js sync.js planner.js command.js receipts.js cloud-config.json supabase-sdk.js icon-192.png icon-512.png public/
+          cp index.html manifest.webmanifest sw.js sync.js planner.js command.js receipts.js meal-tools.js cloud-config.json supabase-sdk.js icon-192.png icon-512.png public/
+          cp -r ocr public/
           touch public/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
