@@ -4,8 +4,8 @@ const assert = require('node:assert/strict');
  const browser=await chromium.launch({headless:true});
  for(const width of [375,390,430]) {
   const page=await browser.newPage({viewport:{width,height:844},isMobile:true,hasTouch:true});
-  const errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto('http://localhost:8000/index.html');
+  const login=await require('./auth-test-fixture.cjs')(page.context());const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('http://localhost:8000/index.html');await login(page);
   assert(await page.locator('body.dark').count(), 'Dark mode must be default');
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Page must fit mobile width');
   for(const id of ['travel','expenses','perdiem','reimbursements','calendar','cloud','overview']){
@@ -39,7 +39,7 @@ const assert = require('node:assert/strict');
   assert((await page.locator('#rentalBoard').innerText()).includes('Test vehicle'));
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Travel board fits mobile with saved data');
   await page.locator('[data-screen="expenses"]').click();assert((await page.locator('#allExpenses').innerText()).includes('Synthetic test purchase'),'Travel import preserves expenses');
-  const backupPromise=page.waitForEvent('download');await page.getByRole('button',{name:'↓ Backup data',exact:true}).click();const backup=await backupPromise;const fs=require('node:fs');const data=JSON.parse(fs.readFileSync(await backup.path(),'utf8')).data;assert.equal(data.flights.length,1);assert.equal(data.rentals.length,1);assert.equal(data.expenses.length,1);
+  const backupPromise=page.waitForEvent('download');await page.locator('#recoveryTools summary').click();await page.getByRole('button',{name:'↓ Backup data',exact:true}).click();const backup=await backupPromise;const fs=require('node:fs');const data=JSON.parse(fs.readFileSync(await backup.path(),'utf8')).data;assert.equal(data.flights.length,1);assert.equal(data.rentals.length,1);assert.equal(data.expenses.length,1);
   await page.locator('[data-screen="calendar"]').click();await page.getByRole('button',{name:'Next',exact:true}).count();
   await page.locator('[data-screen="travel"]').click();
   await page.locator('#travelImportFile').setInputFiles({name:'partial.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({flights:[{flightNumber:'UA-PAST-TEST',from:'IAH',to:'DEN',departureDate:'2020-01-01',status:'Completed'}],rentals:[{confirmation:'ACTIVE-TEST',status:'Active'}]}))});
