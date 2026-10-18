@@ -170,3 +170,8 @@ body .hero .btn,body.dark .hero .btn{background:#baf4d2!important;color:#332541!
 body.dark .auth-card{background:#29233a!important;border:2px solid #a78bc3!important;border-radius:30px!important;box-shadow:9px 10px 0 #0b0814!important}
 body.dark .auth-gate{background:radial-gradient(circle at 85% 20%,#6d4b6d 0,transparent 36%),radial-gradient(circle at 12% 80%,#304e4a 0,transparent 40%),#191626!important}
 body.dark .auth-card h1{font-family:'Fraunces',Georgia,serif!important;color:#ffe5b6!important}
+
+/* Cozy Chaos mobile overflow repair: keep document within viewport, scroll only intentional inner regions */
+html,body{max-width:100%;overflow-x:clip}
+.shell,.main,.screen,.panel,.layout,.two,.stats,.insight-grid,.hero,.top,.card{min-width:0;max-width:100%}
+@media(max-width:760px){.shell{display:block!important;width:100%!important;grid-template-columns:minmax(0,1fr)!important}.main{width:100%!important;min-width:0!important;padding-left:14px!important;padding-right:14px!important}.hero{transform:none!important;width:100%!important;min-width:0!important;grid-template-columns:minmax(0,1fr)!important}.hero>*,.layout>*,.two>*,.insight-grid>*,.stats>*,.panel>*{min-width:0}.stats,.layout,.two,.insight-grid{grid-template-columns:minmax(0,1fr)!important}.tablewrap,.travel-tabs,.nav{max-width:100%;overflow-x:auto}.panel,.card{overflow-wrap:anywhere}.actions{min-width:0;flex-wrap:wrap}}
