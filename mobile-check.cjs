@@ -22,6 +22,7 @@ const assert = require('node:assert/strict');
   await f.locator('[name="amount"]').fill('12.34');
   await f.locator('[name="method"]').selectOption({label:'Other credit card'});
   await f.locator('button[type="submit"], button:not([type])').last().click();
+  await page.waitForFunction(()=>document.getElementById('saveMsg')?.textContent.includes('Saved!'),{timeout:10000});
   await page.reload();await page.waitForSelector('body:not(.auth-locked)');await page.locator('[data-screen="expenses"]').click();
   assert(await page.locator('#allExpenses').innerText().then(t=>t.includes('Synthetic test purchase')),'Records persist locally');
   await page.locator('[data-screen="travel"]').click();
