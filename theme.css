@@ -384,3 +384,17 @@ body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}
 /* Readable data tiles: white surfaces for dark figures. */
 body .main :is(.hub-metric,.hub-day,.stat,.statbox,.metric,.metric-card,.diem-card,.diem-metric,.per-diem-metric,.summary-stat){background:#fffdf8!important;color:#080808!important;border-radius:0!important}
 body .main :is(.hub-metric,.hub-day,.stat,.statbox,.metric,.metric-card,.diem-card,.diem-metric,.per-diem-metric,.summary-stat) *{color:#080808!important}
+
+/* Contrast audit 2026-10-19: all information surfaces use light backgrounds and dark type. */
+html body.dark .main :is(.stat,.stats .card,.hub-metric,.hub-day,.kpis,.metric,.metric-card,.statbox,.summary-stat,.command-card,.command-stat,.daily-stat,.weekly-stat,.today-stat,.diem-card,.diem-metric,.per-diem-metric,.overview-stat,.travel-summary,.travel-tile,.ticket,.travel-ticket,.calday,.calevent){
+ background:#fffdf8!important;background-image:none!important;color:#080808!important;
+ border-radius:0!important;box-shadow:none!important;
+}
+html body.dark .main :is(.stat,.stats .card,.hub-metric,.hub-day,.kpis,.metric,.metric-card,.statbox,.summary-stat,.command-card,.command-stat,.daily-stat,.weekly-stat,.today-stat,.diem-card,.diem-metric,.per-diem-metric,.overview-stat,.travel-summary,.travel-tile,.ticket,.travel-ticket,.calday,.calevent) :is(div,span,small,b,strong,p,dt,dd,label){
+ color:#080808!important;
+}
+html body.dark .main .hero,html body.dark .main .top,html body.dark .main .travel-banner{background:#247bff!important;background-image:none!important;border-radius:0!important}
+html body.dark .main :is(.stat,.stats .card,.hub-metric,.hub-day,.metric,.metric-card,.statbox,.summary-stat,.diem-card,.diem-metric,.per-diem-metric){border:2px solid #080808!important}
+html body.dark .main :is(.btn.primary,button.primary,.quickchip,.recovery-tools>summary){background:#080808!important;color:#fffdf8!important}
+html body.dark .main input[type=file]::file-selector-button{background:#080808!important;color:#fffdf8!important;border-radius:0!important}
+html body.auth-locked .shell{display:none!important}
