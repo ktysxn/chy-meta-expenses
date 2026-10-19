@@ -347,3 +347,36 @@ body .side .brand *,body.dark .side .brand *{border-radius:0!important;box-shado
 @media(max-width:760px){
  body .side .brand,body.dark .side .brand{border-radius:0!important;padding:12px!important}
 }
+
+/* EDITION 07: screenshot-verified component overrides; never alter application data. */
+body.dark .main .hero,body .main .hero,body.dark .main .top,body .main .top{
+ background:#247bff!important;background-image:none!important;color:#080808!important;
+ border:3px solid #080808!important;border-radius:0!important;box-shadow:0 7px 0 #080808!important;
+}
+body .main .hero :is(h1,h2,p,small,span),body.dark .main .hero :is(h1,h2,p,small,span){color:#080808!important}
+body .main .hero:before,body .main .hero:after{border-radius:0!important}
+body.dark .main .calday,body .main .calday,body.dark .main .calday.outside,body .main .calday.outside{
+ background:#fffdf8!important;background-image:none!important;color:#080808!important;
+ border:2px solid #080808!important;border-radius:0!important;box-shadow:none!important;
+}
+body.dark .main .calday.outside,body .main .calday.outside{opacity:.4!important}
+body.dark .main .calday .calnum,body .main .calday .calnum{color:#080808!important}
+body.dark .main .calevent,body .main .calevent{background:#fffdf8!important;color:#080808!important;border:1px solid #080808!important;border-left:4px solid #247bff!important;border-radius:0!important}
+body.dark .main .airport-code,body .main .airport-code,body.dark .main .ticket-sub,body .main .ticket-sub,
+body.dark .main .ticket-time,body .main .ticket-time{color:#080808!important}
+body.dark .main .travel-ticket,body .main .travel-ticket{background:#fffdf8!important;border:2px solid #080808!important;border-radius:0!important}
+body.dark .main .travel-ticket :is(h3,p,small,span,dt,dd,strong),body .main .travel-ticket :is(h3,p,small,span,dt,dd,strong){color:#080808!important}
+body.dark .main .travel-ticket :is(.airport-code,.ticket-time),body .main .travel-ticket :is(.airport-code,.ticket-time){color:#247bff!important}
+body.dark .main .quickchip,body .main .quickchip{background:#080808!important;color:#fffdf8!important;border:2px solid #080808!important;border-radius:0!important}
+body.dark .main input[type=file]::file-selector-button,body .main input[type=file]::file-selector-button{
+ appearance:none!important;background:#080808!important;color:#fffdf8!important;
+ border:2px solid #080808!important;border-radius:0!important;padding:10px 14px!important;box-shadow:none!important
+}
+body.dark .main .recovery-tools>summary,body .main .recovery-tools>summary{background:#080808!important;color:#fffdf8!important;border:2px solid #080808!important;border-radius:0!important}
+body.dark .main :is(.stat,.statbox,.metric,.metric-card,.diem-card,.diem-metric,.per-diem-metric,.summary-stat),
+body .main :is(.stat,.statbox,.metric,.metric-card,.diem-card,.diem-metric,.per-diem-metric,.summary-stat){
+ background:#080808!important;background-image:none!important;color:#fffdf8!important;border:2px solid #080808!important;border-radius:0!important;box-shadow:none!important
+}
+body .main :is(.stat,.statbox,.metric,.metric-card,.diem-card,.diem-metric,.per-diem-metric,.summary-stat) *{color:#fffdf8!important}
+body .side .brand,body.dark .side .brand{background:#080808!important;background-image:none!important;border-radius:0!important}
+body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}
