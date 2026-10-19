@@ -295,3 +295,22 @@ body .side .nav button.active,body .side .nav button:hover{background:#247bff!im
 body .auth-card,body .auth-gate{background:#fffdf8!important;color:#080808!important;border-radius:0!important}
 body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}
 @media(max-width:760px){body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}}
+
+/* EDITION 04 — native file inputs, recovery tools and compact metric tiles. */
+body input[type="file"],body.dark input[type="file"]{background:#fffdf8!important;color:#080808!important;border:2px solid #080808!important;border-radius:0!important;padding:9px!important;font:12px 'DM Mono',monospace!important}
+body input[type="file"]::file-selector-button,body.dark input[type="file"]::file-selector-button{appearance:none!important;background:#080808!important;color:#fffdf8!important;border:2px solid #080808!important;border-radius:0!important;box-shadow:none!important;padding:10px 14px!important;margin-right:14px!important;font:12px 'DM Mono',monospace!important;cursor:pointer!important}
+body input[type="file"]::file-selector-button:hover{background:#247bff!important;color:#080808!important}
+body .recovery-tools,body .recovery-tools>summary,body.dark .recovery-tools>summary{border-radius:0!important;box-shadow:none!important}
+body .recovery-tools>summary,body.dark .recovery-tools>summary{background:#080808!important;color:#fffdf8!important;border:2px solid #080808!important;padding:12px 15px!important;font:12px 'DM Mono',monospace!important;min-height:42px!important;list-style:none!important}
+body .recovery-tools>summary:hover{background:#247bff!important;color:#080808!important}
+body .recovery-tools .recovery-menu,body.dark .recovery-tools .recovery-menu{background:#fffdf8!important;color:#080808!important;border:2px solid #080808!important;border-radius:0!important;box-shadow:none!important}
+body .recovery-tools .recovery-menu :is(button,a,.btn){background:#080808!important;color:#fffdf8!important;border:2px solid #080808!important;border-radius:0!important;box-shadow:none!important}
+body .main :is(.command-stage span,.command-card,.kpis,.summary-card,.metric,.metric-card,.perdiem-stat,.diem-stat,.report-stat,.report-kpi){background:#080808!important;color:#fffdf8!important;border:2px solid #080808!important;border-radius:0!important;box-shadow:none!important}
+body .main :is(.command-stage span,.metric,.metric-card,.perdiem-stat,.diem-stat,.report-stat,.report-kpi) :is(span,b,strong,small,p,div,label){color:#fffdf8!important}
+body .main :is(.command-card,.kpis){background:#fffdf8!important;color:#080808!important}
+body .main :is(.command-card,.kpis) :is(span,b,strong,small,p,div,label){color:#080808!important}
+body .main :is(.btn,.mini,button,.pill,.tabs button,.command-tabs button,.quick-fab){border-radius:0!important;box-shadow:none!important}
+body .main :is(.command-stage span){font-size:12px!important}
+body .main :is(.command-stage span.current){background:#247bff!important;color:#080808!important}
+body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}
+@media(max-width:760px){body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}}
