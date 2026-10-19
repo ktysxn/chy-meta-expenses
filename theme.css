@@ -328,3 +328,22 @@ body .calday button,body .calday .pill,body .calday .chip{border-radius:0!import
 body .calday .more,body .calday .more-events{color:#247bff!important}
 body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}
 @media(max-width:760px){body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}}
+
+/* EDITION 06 — square, black and electric-blue CHY / META sidebar masthead. */
+body .side .brand,body.dark .side .brand,body .brand,body.dark .brand{
+ background:#080808!important;background-image:none!important;color:#fffdf8!important;
+ border:3px solid #fffdf8!important;border-bottom:8px solid #247bff!important;
+ border-radius:0!important;box-shadow:none!important;outline:none!important;
+ padding:18px 12px 22px!important;transform:none!important;
+}
+body .side .brand:before,body.dark .side .brand:before,body .brand:before{
+ background:#247bff!important;color:#080808!important;border:0!important;
+ border-radius:0!important;box-shadow:none!important;transform:none!important;
+}
+body .side .brand small,body.dark .side .brand small,body .brand small{
+ color:#fffdf8!important;background:transparent!important;border-radius:0!important;
+}
+body .side .brand *,body.dark .side .brand *{border-radius:0!important;box-shadow:none!important}
+@media(max-width:760px){
+ body .side .brand,body.dark .side .brand{border-radius:0!important;padding:12px!important}
+}
