@@ -25,7 +25,7 @@ const assert = require('node:assert/strict');
   await page.waitForFunction(()=>document.getElementById('saveMsg')?.textContent.includes('Saved!'));
   await page.waitForFunction(()=>document.getElementById('cloudStatus')?.textContent==='Synced' && !document.getElementById('syncMessage')?.textContent.includes('preparing cloud autosave'),null,{timeout:15000});
   await page.reload();await page.waitForSelector('body:not(.auth-locked)');await page.locator('[data-screen="expenses"]').click();
-  assert(await page.locator('#allExpenses').innerText().then(t=>t.includes('Synthetic test purchase')),'Records persist locally');
+  await page.waitForFunction(()=>document.getElementById('allExpenses')?.textContent.includes('Synthetic test purchase'),null,{timeout:15000}).catch(async()=>{throw Error('Expense missing after reload; diagnostics: '+JSON.stringify(await page.evaluate(()=>({cacheKey:window.cheyenneCacheKey,records:db.expenses.map(e=>e.name),status:document.getElementById('cloudStatus')?.textContent,message:document.getElementById('syncMessage')?.textContent,stored:localStorage.getItem(window.cheyenneCacheKey||'chy_meta_v1')?.slice(0,120)}))));});
   await page.locator('[data-screen="travel"]').click();
   await page.getByRole('button',{name:'＋ Flight',exact:true}).click();
   for(const [key,value] of Object.entries({rotation:'Synthetic rotation',airline:'United',flightNumber:'UA000',departureDate:'2027-01-10',from:'IAH',to:'DEN',departure:'2027-01-10T10:00',arrival:'2027-01-10T11:00',confirmation:'TESTONLY'})) await page.locator('#travel_'+key).fill(value);
