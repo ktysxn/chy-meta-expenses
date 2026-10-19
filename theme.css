@@ -398,3 +398,17 @@ html body.dark .main :is(.stat,.stats .card,.hub-metric,.hub-day,.metric,.metric
 html body.dark .main :is(.btn.primary,button.primary,.quickchip,.recovery-tools>summary){background:#080808!important;color:#fffdf8!important}
 html body.dark .main input[type=file]::file-selector-button{background:#080808!important;color:#fffdf8!important;border-radius:0!important}
 html body.auth-locked .shell{display:none!important}
+
+/* Reimbursement progress tabs: high contrast at every stage. */
+html body.dark .main .command-stage span,
+html body .main .command-stage span{
+ background:#fffdf8!important;background-image:none!important;
+ color:#080808!important;border:2px solid #080808!important;
+ border-radius:0!important;box-shadow:none!important;opacity:1!important;
+}
+html body.dark .main .command-stage span.current,
+html body .main .command-stage span.current{
+ background:#247bff!important;color:#080808!important;border-color:#080808!important;
+}
+html body.dark .main .command-stage span *,
+html body .main .command-stage span *{color:#080808!important}
