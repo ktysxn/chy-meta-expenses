@@ -41,7 +41,7 @@ const assert = require('node:assert/strict');
   assert((await page.locator('#flightBoard').innerText()).includes('12A'));
   assert((await page.locator('#rentalBoard').innerText()).includes('Test vehicle'));
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Travel board fits mobile with saved data');
-  await page.locator('[data-screen="expenses"]').click();assert((await page.locator('#allExpenses').innerText()).includes('Synthetic test purchase'),'Travel import preserves expenses');
+  await page.locator('[data-screen="expenses"]').click();await page.waitForFunction(()=>document.getElementById('allExpenses')?.textContent.includes('Synthetic test purchase'),null,{timeout:15000}).catch(async()=>{throw Error('Travel import lost expense; diagnostics: '+JSON.stringify(await page.evaluate(()=>({cacheKey:window.cheyenneCacheKey,records:db.expenses.map(e=>e.name),flights:db.flights.length,rentals:db.rentals.length,status:document.getElementById('cloudStatus')?.textContent,message:document.getElementById('syncMessage')?.textContent,stored:localStorage.getItem(window.cheyenneCacheKey||'chy_meta_dashboard_v1')?.slice(0,250)}))));});
   const backupPromise=page.waitForEvent('download');await page.locator('#recoveryTools summary').click();await page.getByRole('button',{name:'↓ Backup data',exact:true}).click();const backup=await backupPromise;const fs=require('node:fs');const data=JSON.parse(fs.readFileSync(await backup.path(),'utf8')).data;assert.equal(data.flights.length,1);assert.equal(data.rentals.length,1);assert.equal(data.expenses.length,1);
   await page.locator('[data-screen="calendar"]').click();await page.getByRole('button',{name:'Next',exact:true}).count();
   await page.locator('[data-screen="travel"]').click();
