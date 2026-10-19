@@ -234,3 +234,27 @@ body .top{gap:12px!important}
 body .actions{flex-wrap:wrap!important}
 }
 @media(max-width:350px){body .stats{grid-template-columns:minmax(0,1fr)!important}}
+
+/* Readability pass: consistent high-contrast text on white surfaces, including logs. */
+body .main,body .main .panel,body .main .card,body .main .command-card,
+body .main .travel-ticket,body .main .kpis,body .main td,
+body .main .small,body .main .muted,body .main .chip,
+body .main .tag,body .main .command-info,body .main .command-label,
+body .main .empty,body .main .notice,body .main .subtitle,
+body .main .panel p,body .main .card .label,body .main .card .note {
+  color:#101820!important;
+}
+body .main .panel,body .main .command-card,body .main .travel-ticket,
+body .main td,body .main .kpis {background-color:#fff!important}
+body .main .small,body .main .muted,body .main .chip,
+body .main .tag,body .main .command-info,body .main .command-label,
+body .main .card .label,body .main .card .note,body .main label,
+body .main td {font-size:13px!important;line-height:1.55!important}
+body .main th{background:#080808!important;color:#fff!important;font-size:12px!important;line-height:1.5!important}
+body .main input::placeholder,body .main textarea::placeholder{color:#465366!important;opacity:1!important}
+body .main .pill,body .main .pill.paid,body .main .pill.pending{color:#080808!important;background:#fff!important}
+body .main .stats .card:nth-child(4n+2),body .main .stats .card:nth-child(4n+2) *{color:#080808!important}
+body .side .nav button,body .side .sidefoot{color:#fff!important}
+body .side .nav button.active,body .side .nav button:hover{color:#080808!important}
+body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}
+@media(max-width:760px){body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}}
