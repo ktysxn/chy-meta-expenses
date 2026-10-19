@@ -35,6 +35,7 @@ const assert = require('node:assert/strict');
   await page.locator('#travelImportFile').setInputFiles({name:'test-travel.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(travelImport))});
   await page.getByRole('button',{name:'Merge bookings',exact:true}).click();
   assert((await page.locator('#travelImportPreview').innerText()).includes('1 added, 1 updated'),'Import deduplicates and merges bookings');
+  await page.waitForFunction(()=>document.getElementById('cloudStatus')?.textContent==='Synced' && !document.getElementById('syncMessage')?.textContent.includes('preparing cloud autosave'),null,{timeout:15000});
   await page.reload();await page.waitForSelector('body:not(.auth-locked)');await page.locator('[data-screen="travel"]').click();
   assert.equal(await page.locator('#flightBoard .travel-ticket').count(),1);
   assert((await page.locator('#flightBoard').innerText()).includes('12A'));
