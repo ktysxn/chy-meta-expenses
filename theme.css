@@ -145,6 +145,8 @@ body:not(.dark) a{color:#245e8b;text-underline-offset:4px}
 color:#080808!important;color-scheme:light!important;font-family:'Space Grotesk',Arial,sans-serif!important;
 background:#fff!important;background-image:none!important;
 }
+/* Keep the private workspace hidden regardless of later responsive shell rules. */
+body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}
 html,body{max-width:100%;overflow-x:clip}
 body *{box-sizing:border-box}
 body .shell,body.dark .shell{display:grid;grid-template-columns:262px minmax(0,1fr)!important;min-width:0;max-width:100%}
