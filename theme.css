@@ -258,3 +258,40 @@ body .side .nav button,body .side .sidefoot{color:#fff!important}
 body .side .nav button.active,body .side .nav button:hover{color:#080808!important}
 body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}
 @media(max-width:760px){body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}}
+
+/* EDITION 03 — universal off-white / electric blue / black visual system. */
+:root{--bg:#fffdf8!important;--card:#fffdf8!important;--muted:#080808!important;--accent:#247bff!important;--line:#080808!important}
+body,body.dark,body:not(.dark),body .main{background:#fffdf8!important;color:#080808!important}
+body .main :is(.panel,.card,.command-card,.travel-ticket,.travel-banner,.ticket,.ticket-card,.kpis,.notice,.command-stage span,.command-details>summary,.tabs,.tablewrap,.travel-empty,.payroll-record,.calevent,.recovery-menu,.command-dialog,.modal,.modal-back,.insight-card,.summary-card,.formgrid,.empty,.progress,.progress span){background:#fffdf8!important;background-image:none!important;color:#080808!important;border-radius:0!important;box-shadow:none!important}
+body .main :is(table,thead,tbody,tr,td){background:#fffdf8!important;color:#080808!important;border-radius:0!important;box-shadow:none!important}
+body .main :is(th,thead th){background:#080808!important;color:#fffdf8!important}
+body .main :is(td,tr,table){border-color:#080808!important}
+body .main :is(.panel,.card,.command-card,.travel-ticket,.notice,.command-details>summary,.tabs,.command-dialog){border-radius:0!important}
+body .main :is(p,span,small,label,li,dt,dd,td,strong,b,em,output,summary,.small,.muted,.chip,.tag,.command-info,.command-label,.kpis,.payroll-record,.calevent,.empty,.notice,.card .note,.card .label){color:#080808!important}
+body .main :is(.eyebrow,.filelink,.mini,a:not(.btn),.accent,.blue,.sectionhead .chip){color:#247bff!important}
+body .main :is(.panel,.card,.command-card,.travel-ticket,.notice,.kpis,.command-details>summary) :is(a:not(.btn)){color:#247bff!important}
+body .main :is(button,.btn,.mini,.tabs button,.command-tabs button,.command-card button,.command-details button){border-radius:0!important;box-shadow:none!important}
+body .main :is(.tabs button,.command-tabs button,.command-card button,.command-details button){background:#fffdf8!important;color:#080808!important;border:2px solid #080808!important}
+body .main :is(.tabs button.active,.command-tabs button.active,.tabs button:hover,.command-tabs button:hover){background:#247bff!important;color:#080808!important;border-color:#080808!important}
+body .main :is(input,textarea,select,option){background:#fffdf8!important;color:#080808!important;border:2px solid #080808!important;border-radius:0!important}
+body .main :is(input,textarea)::placeholder{color:#247bff!important;opacity:1!important}
+body .main :is(.pill,.tag,.badge,.chip){background:#fffdf8!important;color:#080808!important;border-radius:0!important}
+body .main :is(.stats .card:nth-child(4n+2)){background:#247bff!important}
+body .main :is(.stats .card:nth-child(4n+2)) *{color:#080808!important}
+body .main :is(.btn.primary,button.primary){background:#080808!important;color:#fffdf8!important}
+body .main :is(.btn.primary,button.primary):hover{background:#247bff!important;color:#080808!important}
+body .main :is(.panel,.card,.command-card,.travel-ticket,.notice,.command-dialog) :is(.small,.muted,.chip,.tag,.command-info,.command-label){font-size:13px!important;line-height:1.55!important}
+body .main :is(.tablewrap,table){overflow-x:auto}
+body .main :is(.tablewrap,table) td{background:#fffdf8!important;color:#080808!important}
+body .main :is(.tablewrap,table) th{background:#080808!important;color:#fffdf8!important}
+body .main :is(.pill.pending,.pill.paid){background:#fffdf8!important;color:#080808!important}
+body .main :is(.calevent.payroll){border-left:4px solid #247bff!important}
+body .main :is(.progress span){background:#247bff!important}
+body .main :is(.travel-banner){background:#247bff!important}
+body .main :is(.travel-banner) *{color:#080808!important}
+body .main :is(.main:before){background:#080808!important;color:#fffdf8!important}
+body .side .nav button{border-radius:0!important;color:#fffdf8!important}
+body .side .nav button.active,body .side .nav button:hover{background:#247bff!important;color:#080808!important}
+body .auth-card,body .auth-gate{background:#fffdf8!important;color:#080808!important;border-radius:0!important}
+body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}
+@media(max-width:760px){body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}}
