@@ -314,3 +314,17 @@ body .main :is(.command-stage span){font-size:12px!important}
 body .main :is(.command-stage span.current){background:#247bff!important;color:#080808!important}
 body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}
 @media(max-width:760px){body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}}
+
+/* EDITION 05 — square off-white financial calendar; no navy or gray. */
+body .calday,body.dark .calday,body .calday.outside,body.dark .calday.outside{background:#fffdf8!important;background-image:none!important;color:#080808!important;border:2px solid #080808!important;border-radius:0!important;box-shadow:none!important}
+body .calday.outside,body.dark .calday.outside{background:#fffdf8!important;border-color:#247bff!important;opacity:.55!important}
+body .calday :is(span,small,strong,b,div),body.dark .calday :is(span,small,strong,b,div){color:#080808!important}
+body .calday.today,body.dark .calday.today,body .calday.current,body.dark .calday.current{background:#247bff!important;border-color:#080808!important}
+body .calevent,body.dark .calevent,body .calday .calevent,body.dark .calday .calevent{background:#fffdf8!important;color:#080808!important;border:1px solid #080808!important;border-left:4px solid #247bff!important;border-radius:0!important;box-shadow:none!important}
+body .calevent *,body.dark .calevent *{color:#080808!important}
+body .calendar-head,body.dark .calendar-head{color:#247bff!important}
+body .calendar-head *,body.dark .calendar-head *{color:#247bff!important}
+body .calday button,body .calday .pill,body .calday .chip{border-radius:0!important;box-shadow:none!important}
+body .calday .more,body .calday .more-events{color:#247bff!important}
+body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}
+@media(max-width:760px){body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}}
