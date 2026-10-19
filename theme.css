@@ -375,8 +375,12 @@ body.dark .main input[type=file]::file-selector-button,body .main input[type=fil
 body.dark .main .recovery-tools>summary,body .main .recovery-tools>summary{background:#080808!important;color:#fffdf8!important;border:2px solid #080808!important;border-radius:0!important}
 body.dark .main :is(.stat,.statbox,.metric,.metric-card,.diem-card,.diem-metric,.per-diem-metric,.summary-stat),
 body .main :is(.stat,.statbox,.metric,.metric-card,.diem-card,.diem-metric,.per-diem-metric,.summary-stat){
- background:#080808!important;background-image:none!important;color:#fffdf8!important;border:2px solid #080808!important;border-radius:0!important;box-shadow:none!important
+ background:#fffdf8!important;background-image:none!important;color:#080808!important;border:2px solid #080808!important;border-radius:0!important;box-shadow:none!important
 }
-body .main :is(.stat,.statbox,.metric,.metric-card,.diem-card,.diem-metric,.per-diem-metric,.summary-stat) *{color:#fffdf8!important}
+body .main :is(.stat,.statbox,.metric,.metric-card,.diem-card,.diem-metric,.per-diem-metric,.summary-stat) *{color:#080808!important}
 body .side .brand,body.dark .side .brand{background:#080808!important;background-image:none!important;border-radius:0!important}
 body.auth-locked .shell,body.dark.auth-locked .shell{display:none!important}
+
+/* Readable data tiles: white surfaces for dark figures. */
+body .main :is(.hub-metric,.hub-day,.stat,.statbox,.metric,.metric-card,.diem-card,.diem-metric,.per-diem-metric,.summary-stat){background:#fffdf8!important;color:#080808!important;border-radius:0!important}
+body .main :is(.hub-metric,.hub-day,.stat,.statbox,.metric,.metric-card,.diem-card,.diem-metric,.per-diem-metric,.summary-stat) *{color:#080808!important}
