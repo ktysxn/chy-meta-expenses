@@ -423,3 +423,41 @@ html body .main .panel::before,
 html body .main .card::before{
  background:#247bff!important;background-image:none!important;border-radius:0!important;
 }
+
+/* Travel hub: strong section bands, readable booking details, and blue route blocks. */
+html body #travel .panel{border-top:8px solid #247bff!important}
+html body #travel .panel::before{display:none!important}
+html body #travel .panel>h2{
+ background:#080808!important;color:#fffdf8!important;
+ padding:14px 16px!important;margin:0 0 20px!important;
+}
+html body #travel .travel-ticket{padding:18px!important;border:2px solid #080808!important;background:#fffdf8!important}
+html body #travel .travel-ticket .ticket-top{
+ background:#080808!important;color:#fffdf8!important;
+ padding:14px!important;margin:-18px -18px 14px!important;border-bottom:4px solid #247bff!important;
+}
+html body #travel .travel-ticket .ticket-top :is(b,strong){color:#fffdf8!important}
+html body #travel .travel-ticket .ticket-top .pill{
+ background:#247bff!important;color:#080808!important;border:1px solid #247bff!important;
+}
+html body #travel .travel-ticket .ticket-route{
+ background:#247bff!important;color:#080808!important;
+ padding:18px 14px!important;border:2px solid #080808!important;margin:16px 0!important;
+}
+html body #travel .travel-ticket .ticket-route :is(div,span,b,strong){color:#080808!important}
+html body #travel .travel-ticket .ticket-details{gap:0!important;border-top:2px solid #080808!important}
+html body #travel .travel-ticket .ticket-details>div{
+ padding:12px 10px!important;border-bottom:1px solid #080808!important;border-left:4px solid #247bff!important;min-width:0;
+}
+html body #travel .travel-ticket .ticket-details :is(dt,dd){color:#080808!important}
+html body #travel #rentalBoard .ticket-details>div:nth-child(6){background:#247bff!important;border-left-color:#080808!important}
+html body #travel .travel-ticket .ticket-actions{border-top:3px solid #247bff!important;padding-top:16px!important}
+html body #travel .travel-ticket .ticket-actions .btn:first-child{background:#080808!important;color:#fffdf8!important}
+html body #travel .travel-ticket .ticket-actions .btn:hover{background:#247bff!important;color:#080808!important}
+html body #travel .travel-tabs{border-left:6px solid #247bff!important;padding:12px!important;border-top:2px solid #080808!important;border-bottom:2px solid #080808!important}
+html body #travel .travel-check{border-bottom:1px solid #080808!important;padding:14px 10px!important}
+@media(max-width:720px){
+ html body #travel .panel>h2{padding:12px!important;font-size:17px!important}
+ html body #travel .travel-ticket .ticket-route{padding:14px 10px!important;gap:8px!important}
+ html body #travel .travel-ticket .ticket-details>div{padding:10px 8px!important}
+}
