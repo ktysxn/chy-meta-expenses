@@ -49,6 +49,7 @@ jobs:
           node overview-check.cjs
           node auth-check.cjs
           node payroll-check.cjs
+          node mobile-titles-check.cjs
       - name: Verify private access policies and atomic revisions
         env:
           PGPASSWORD: test-only
