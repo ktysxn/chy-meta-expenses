@@ -480,3 +480,59 @@ html body.dark .main .card::before{
  html body .main .card,html body.dark .main .card{padding:18px 12px 18px 46px!important}
  html body .main .card::before,html body.dark .main .card::before{top:18px!important;left:12px!important;width:22px!important;font-size:22px!important}
 }
+
+/* Shared contrast system: dark headings, blue priorities, light detail surfaces. */
+html body .main .screen .panel,
+html body.dark .main .screen .panel{border-top:7px solid #247bff!important}
+html body .main .screen .panel::before{display:none!important}
+html body .main .screen .panel h2,
+html body.dark .main .screen .panel h2{
+ background:#080808!important;color:#fffdf8!important;padding:14px 16px!important;
+ margin-bottom:18px!important;line-height:1.3!important;
+}
+html body .main .screen .panel h2::before{background:#247bff!important;background-image:none!important}
+html body .main .screen .panel :is(.hub-head,.sectionhead)>h2{flex:1;min-width:0}
+html body .main .screen .command-card{border-top:5px solid #247bff!important}
+html body .main .screen .command-card>.ticket-top{
+ background:#080808!important;color:#fffdf8!important;padding:12px!important;
+ border-bottom:4px solid #247bff!important;margin-bottom:14px!important;
+}
+html body .main .screen .command-card>.ticket-top :is(b,strong){color:#fffdf8!important}
+html body .main .screen .command-card>.ticket-top .pill{background:#247bff!important;color:#080808!important}
+html body .main .screen .command-stage span{border-bottom:4px solid #080808!important}
+html body .main .screen .command-stage span.current{background:#247bff!important;color:#080808!important;border-bottom:4px solid #080808!important;font-weight:800!important}
+html body .main .screen :is(.tabs,.command-tabs) .btn.active{
+ background:#247bff!important;color:#080808!important;border:2px solid #080808!important;
+}
+html body .main .screen :is(.command-details>summary,#perDiemReportPanel details>summary){
+ background:#080808!important;color:#fffdf8!important;border-left:6px solid #247bff!important;
+ padding:14px!important;
+}
+html body .main .screen :is(.hub-metric,.hub-day){border-top:5px solid #247bff!important}
+html body .main .screen .hub-metrics>.hub-metric:first-child{background:#247bff!important;color:#080808!important}
+html body .main .screen .hub-metrics>.hub-metric:first-child *{color:#080808!important}
+html body .main .screen .kpis{border-bottom:1px solid #080808!important;padding:12px 8px!important}
+html body .main .screen .kpis:first-child{border-left:5px solid #247bff!important}
+html body .main .screen .notice{border-left:8px solid #247bff!important}
+html body .main .screen :is(.barfill,.progress>span){background:#247bff!important;background-image:none!important}
+html body #calendar .calendar-head{background:#080808!important;color:#fffdf8!important;padding:16px!important;flex-wrap:wrap!important;border-bottom:6px solid #247bff!important}
+html body #calendar .calendar-head :is(h2,.small,b){color:#fffdf8!important}
+html body #calendar .calendar-head h2{padding:0!important;margin:0 0 8px!important}
+html body #calendar .calendar-head .btn{background:#fffdf8!important;color:#080808!important}
+html body #calendar .calweek{background:#080808!important;color:#fffdf8!important;padding:10px 2px!important;font-weight:800!important}
+html body #calendar .calday{border:1px solid #080808!important}
+html body #calendar .calday .calnum{background:#247bff!important;color:#080808!important;padding:5px 7px!important;font-weight:800!important;margin-bottom:8px!important}
+html body #calendar .calday.outside{opacity:1!important;background:#fffdf8!important;border-color:#080808!important}
+html body #calendar .calday.outside .calnum{background:none!important}
+html body #calendar .calday .calevent{background:#fffdf8!important;color:#080808!important;border-left:4px solid #247bff!important}
+html body #calendar .calday .calevent.payroll{background:#247bff!important;color:#080808!important;border-color:#080808!important}
+html body #calendar .calday .calevent.good{background:#080808!important;color:#fffdf8!important;border-color:#080808!important}
+html body #calendar .calday .calevent.alert{border:2px dashed #080808!important;border-left:4px solid #247bff!important;font-weight:800!important}
+html body .main .screen .payroll-record{border-top:2px solid #080808!important;border-left:5px solid #247bff!important;padding:14px!important}
+@media(max-width:740px){
+ html body .main .screen .panel h2{font-size:17px!important;padding:12px!important}
+ html body #calendar .calendar-head{padding:12px!important}
+ html body #calendar .calendar-head h2{padding:0!important}
+ html body #calendar .calweek{font-size:10px!important}
+ html body #calendar .calday .calnum{padding:4px!important}
+}
