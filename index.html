@@ -58,6 +58,60 @@ body:not(.dark) .tablewrap tbody tr:nth-child(even),body:not(.dark) .tablewrap t
 body:not(.dark) .tablewrap tbody tr:hover,body:not(.dark) .tablewrap tbody tr:hover td{background:#e8f1ff!important}
 body:not(.dark) .tablewrap thead th,body:not(.dark) #allExpenses thead th{background:#080b11!important;color:#fff!important}
 body:not(.dark) .kpis,body:not(.dark) .kpis b,body:not(.dark) .panel .small,body:not(.dark) .panel .muted{color:#253348}
+
+/* Mobile WHITE LABEL layout: readable spacing, consistent square controls and clear hierarchy. */
+@media(max-width:740px){
+ html,body{width:100%;overflow-x:clip}
+ .shell{display:block;min-width:0}
+ .side{position:relative!important;top:auto!important;padding:14px 16px 12px!important;gap:12px!important;box-shadow:none!important;border-right:0!important;border-bottom:4px solid #247bff}
+ .brand{padding:0!important;margin:0!important;font-size:20px!important}
+ .nav{display:flex!important;gap:8px!important;overflow-x:auto!important;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:4px 0 10px!important;scrollbar-width:thin}
+ .nav button{flex:0 0 auto!important;min-height:46px!important;padding:12px 14px!important;scroll-snap-align:start;white-space:nowrap;border:1px solid #515151!important;border-radius:0!important;font-size:11px!important;letter-spacing:.025em}
+ .nav button.active{background:#247bff!important;color:#fff!important;border-color:#247bff!important;box-shadow:none!important}
+ .main{width:100%!important;max-width:100%!important;min-width:0!important;padding:24px 16px calc(108px + env(safe-area-inset-bottom))!important;margin:0!important}
+ .top{display:flex;flex-direction:column;align-items:stretch!important;gap:16px!important;margin-bottom:22px}
+ .title{font-size:clamp(25px,7vw,34px)!important;line-height:1.08;overflow-wrap:anywhere}
+ .subtitle{line-height:1.55;max-width:45ch}
+ .top .actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;width:100%}
+ .top .actions .btn{width:100%;min-width:0;min-height:48px;padding:12px 10px!important;white-space:normal;text-align:center}
+ .layout,.insight-grid,.command-grid,.two,.formgrid{grid-template-columns:minmax(0,1fr)!important;gap:16px!important}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;margin:20px 0!important}
+ .card{padding:17px 14px!important;min-width:0;min-height:115px;border-radius:0!important}
+ .card .value{font-size:clamp(19px,5vw,26px)!important;line-height:1.2;overflow-wrap:anywhere}
+ .card .label,.card .note{line-height:1.4}
+ .panel{padding:19px 16px!important;margin-bottom:18px!important;min-width:0;border-radius:0!important}
+ .panel h2{line-height:1.25;margin-bottom:16px!important}
+ .sectionhead{align-items:flex-start;flex-wrap:wrap;gap:12px}
+ .command-tabs,.tabs,.travel-tabs{gap:8px!important;flex-wrap:wrap}
+ .command-tabs .btn,.tabs button,.travel-tabs .btn{min-height:46px;border-radius:0!important;white-space:normal}
+ .command-card,.travel-ticket{padding:16px!important;border-radius:0!important}
+ .command-stage{gap:6px!important}
+ .command-stage span{padding:8px!important;border-radius:0!important}
+ .ticket-details{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+ .ticket-route{gap:8px;min-width:0}
+ .airport-code{font-size:clamp(20px,6vw,27px)!important}
+ .tablewrap{width:100%;max-width:100%;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ table{min-width:max-content}
+ th,td{padding:12px 13px!important;line-height:1.5}
+ .kpis{gap:12px;align-items:flex-start;line-height:1.5}
+ .kpis b{overflow-wrap:anywhere;text-align:right}
+ input,select,textarea{max-width:100%;min-height:46px;font-size:16px!important;border-radius:0!important}
+ input[type=checkbox],input[type=radio]{min-height:auto}
+ .formfooter,.ticket-actions{flex-wrap:wrap;gap:10px}
+ .formfooter .btn,.ticket-actions .btn{min-height:46px}
+ .quick-fab{right:16px!important;bottom:calc(16px + env(safe-area-inset-bottom))!important;border-radius:0!important;background:#247bff!important;box-shadow:4px 4px 0 #111!important}
+ .calendar-grid{gap:4px!important}
+ .calday{min-width:0;min-height:72px!important;padding:5px!important;border-radius:0!important}
+ .calevent{overflow-wrap:anywhere;white-space:normal;line-height:1.2}
+}
+@media(max-width:390px){
+ .main{padding-left:12px!important;padding-right:12px!important}
+ .panel{padding:16px 12px!important}
+ .stats{gap:8px!important}
+ .card{padding:13px 11px!important}
+ .card .value{font-size:19px!important}
+ .nav button{padding:11px 12px!important}
+}
 </style><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="apple-touch-icon" href="./icon-192.png"><link rel="stylesheet" href="./theme.css?v=site-contrast-20261020"></head><body class="dark auth-locked"><section id="authGate" class="auth-gate"><div class="auth-card"><div class="eyebrow">CHY / META · PRIVATE WORKSPACE</div><h1>Welcome back, Kam.</h1><p>Sign in to your Cheyenne command center.</p><p id="authGateMessage" role="status">Connecting securely…</p><div id="authGateForm"></div><p class="small">Your records autosave privately. This session signs out after seven minutes of inactivity.</p></div></section><div class="shell"><aside class="side"><div class="brand">CHY<span style="color:#79a4ff"> / </span>META<small>COMMAND CENTER</small></div><nav class="nav" id="nav"><button class="active" data-screen="overview">◫ &nbsp; Overview</button><button data-screen="cloud">☁ &nbsp; Cloud sync</button><button data-screen="travel">✈ &nbsp; Travel hub</button><button data-screen="expenses">▤ &nbsp; Purchases & receipts</button><button data-screen="perdiem">◷ &nbsp; Per diem & savings</button><button data-screen="mileage">↗ &nbsp; Mileage</button><button data-screen="payback">▣ &nbsp; Card payback</button><button data-screen="insights">◉ &nbsp; Insights & charts</button><button data-screen="calendar">▦ &nbsp; Financial calendar</button><button data-screen="concur">✓ &nbsp; Concur preparation</button></nav><div class="sidefoot">PROJECT 8124065<br>Cheyenne, Wyoming<br>Travel · Expenses · Rotations</div></aside><main class="main"><div class="top"><div><div class="eyebrow">Wunderlich-Malec · Personal tracker</div><div class="title" id="screenTitle">Your Cheyenne command center</div><div class="subtitle">Your two-week rotations, travel details, and expenses in one place.</div></div><div class="actions"><button class="btn" onclick="go('cloud')" id="cloudStatus" aria-live="polite">Local only</button><details id="recoveryTools" class="recovery-tools"><summary>Recovery tools</summary><div class="recovery-menu"><button class="btn" onclick="document.getElementById('recoveryTools').open=false;exportData()">↓ Backup data</button><button class="btn" onclick="document.getElementById('recoveryTools').open=false;document.getElementById('restore').click()">↑ Restore</button></div></details><button class="btn" onclick="cheyenneCloud.signOut()">Sign out</button><input type="file" id="restore" accept=".json" hidden onchange="importData(event)"><button class="btn primary" onclick="go('expenses');document.getElementById('newExpense').scrollIntoView({behavior:'smooth'})">+ Add expense</button></div></div><div class="notice">🔒 Changes autosave on this device. Your private cloud workspace updates automatically across signed-in devices. It does not connect to banks, airlines, National, Concur, or ChatGPT. Use <b>Backup data</b> regularly. When cloud sync is connected, receipts also sync privately. Backups include your receipt files. All figures are based on entered records, not bank-verified balances.</div>
 <div class="screen active" id="overview"><div id="homeTravel"></div><div class="hero"><div><small>CHY / META · PROJECT 8124065</small><h2>CHY / META ↗</h2><p>01 / EXPENSES. 02 / PER DIEM. 03 / TRAVEL. 04 / REPORTING.</p></div><button class="btn" onclick="go('expenses');document.getElementById('newExpense').scrollIntoView({behavior:'smooth'})">＋ Log expense</button></div><div class="stats" id="stats"></div><div class="insight-grid"><div class="panel"><div class="sectionhead"><h2>Expense mix</h2><button class="mini" onclick="go('insights')">Explore insights →</button></div><div id="overviewBars"></div></div><div class="panel"><div class="sectionhead"><h2>Next up</h2><button class="mini" onclick="go('calendar')">Open calendar →</button></div><div id="nextEvents"></div></div></div><div class="layout"><div><div class="panel"><div class="sectionhead"><h2>Recent activity</h2><span class="chip">Purchases & reimbursements</span></div><div class="tablewrap"><table><thead><tr><th>Date</th><th>Expense</th><th>Payment</th><th class="right">Amount</th><th>Status</th></tr></thead><tbody id="recent"></tbody></table></div></div><div class="panel"><h2>Concur coding at a glance</h2><div class="tablewrap"><table><thead><tr><th>Expense</th><th>Project / BU</th><th>Phase</th><th>Task</th></tr></thead><tbody><tr><td>Per diem · Mileage · Living</td><td>8124065</td><td>03</td><td>2.102</td></tr><tr><td>Airfare · Car rental</td><td>8124065</td><td>00</td><td>2.102</td></tr><tr><td>Cell phone</td><td>46G000 Houston</td><td>—</td><td>—</td></tr><tr><td>Work boots</td><td>To confirm</td><td>—</td><td>—</td></tr></tbody></table></div></div></div><div><div class="panel"><h2>October snapshot</h2><div id="snapshot"></div></div><div class="panel"><h2>Action items</h2><div id="alerts"></div></div><div class="panel"><h2>Upcoming milestones</h2><p class="small">Use the calendar to review your entered records.</p></div></div></div></div>
 <section class="screen" id="travel">
