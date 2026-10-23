@@ -49,6 +49,7 @@ jobs:
           node overview-check.cjs
           node auth-check.cjs
           node payroll-check.cjs
+          node lodging-check.cjs
           node mobile-titles-check.cjs
       - name: Verify private access policies and atomic revisions
         env:
@@ -63,7 +64,7 @@ jobs:
       - name: Package only public app shell
         run: |
           mkdir public
-          cp index.html theme.css manifest.webmanifest sw.js sync.js form-drafts.js payroll.js planner.js command.js receipts.js meal-tools.js expense-editor.js overview-tools.js per-diem-reports.js cloud-config.json supabase-sdk.js icon-192.png icon-512.png public/
+          cp index.html theme.css manifest.webmanifest sw.js sync.js form-drafts.js payroll.js lodging.js planner.js command.js receipts.js meal-tools.js expense-editor.js overview-tools.js per-diem-reports.js cloud-config.json supabase-sdk.js icon-192.png icon-512.png public/
           cp -r ocr public/
           touch public/.nojekyll
       - uses: actions/upload-pages-artifact@v3
